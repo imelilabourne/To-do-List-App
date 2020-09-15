@@ -1,0 +1,45 @@
+<div class="container main">
+    <div class="nav">Hello! <span class="dateClass">{{today | date: 'short'}}</span></div>
+    <div class="main-container">
+        <div class="header">
+            <h1>TODO LIST</h1>
+        </div>
+        <div class="info"><input type="checkbox" (change)="selectAll()">Select All</div>
+        <div class="inputDiv">
+            <input type="text" class="form-control addInput" placeholder="Things you want to do today?" [(ngModel)]="taskTitle" (keyup.enter) = "addTask()">
+        </div>
+        <div class="content">
+            <ul>
+                <li *ngFor= "let task of tasks" @fade>
+                    <input type="checkbox" [(ngModel)]="task.completed">
+
+                    <!-- input to focus -->
+                    <div *ngIf="!task.editing; else editingTask" (dblclick) = "toggleEdit(task)" [ngClass]="{completed: task.completed}">{{task.title}}</div>
+                    <ng-template #editingTask>
+                        <input type="text" [(ngModel)] = "task.title" (blur)="doneEditing(task)"  (keyup.enter)="editTask(task)" (keyup.esc)="cancelEditing(task)" autofocus>
+                    </ng-template>
+
+                    <!-- buttons switching -->
+                    <div *ngIf="!task.editing; else doneBtn" ><button class="btn btn-success listBtn"(click)="toggleEdit(task)" ><i class="fa fa-edit"> Edit</i></button></div>    
+                    <ng-template #doneBtn>
+                    <div>
+                        <button class="btn btn-success listBtn"(click)="editTask(task)" ><i class="fa fa-edit">   Done</i></button>
+                    </div>
+                    </ng-template>
+                    
+                    <div>
+                        <button class="btn btn-danger listBtn" (click)="deleteTask(task) && doneEditing(task)"><i   class="fa fa-trash"> Del</i></button>
+                    </div>
+                </li>
+            </ul>
+            <div class="info">
+                <div>{{ remaining()}} uncompleted tasks</div>
+            </div>
+            <div *ngIf="atleastOneCompleted()">
+                <button class="btn btn-warning btn-block" (click) ="clearCompleted() && deleteCompleted(task)">Clear Completed</button> 
+                <div class="alert alert-warning">You've selected an item</div>
+            </div>
+            
+        </div>
+    </div>
+</div>

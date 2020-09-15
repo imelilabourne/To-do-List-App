@@ -1,0 +1,84 @@
+.main{
+    width: 100%;
+    background-color:	#9cb1a033;
+}
+
+.completed{
+    text-decoration-line: line-through;
+}
+
+.addInput{
+    max-width: 500px;
+    line-height: 2em;
+    margin: 10px;
+}
+
+ul > li{
+    display: grid;
+    grid-template-columns: .5fr 2.5fr .5fr .5fr;
+}
+
+li > *{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listBtn{
+    max-width: 80px;
+}
+
+.main{
+    max-width: 50%;
+    box-shadow: 8px 4px#9cb1a0;
+    border-radius: 20px;
+    padding: 0;
+}
+
+.header, .inputDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.nav{
+    background-color:#bfdbc546;
+    display: block;
+    /* color: white; */
+    line-height: 3em;
+    font-size: 16px;
+    padding-left: 1.5em;
+    margin-top: 1em;
+}
+
+.main-container{
+    margin: 4%;
+}
+
+.main{
+    margin-top: 5em;
+}
+
+li{
+    background-color:	#b9ecc24d;
+    margin: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 2rem;
+    line-height: 1.5em;
+}
+
+.info{
+    display: flex;
+    justify-content: flex-end;
+}
+
+input[type="checkbox"]{
+    margin: 0 10px;
+}
+
+.dateClass{
+    font-size: 1.5em;
+    float: right;
+    padding-right: 20px;
+    color: rgb(42, 59, 59);
+}
