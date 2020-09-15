@@ -43,7 +43,7 @@
                 <div>{{ remaining()}} uncompleted tasks</div>
             </div>
             <div *ngIf="atleastOneCompleted()">
-                <button class="btn btn-warning btn-block" (click) ="clearCompleted(); deleteCompleted(task)">Clear Completed</button> 
+                <button class="btn btn-warning btn-block" (click) ="clearCompleted()">Clear Completed</button> 
                 <div class="alert alert-warning">You've selected an item</div>
             </div>
             

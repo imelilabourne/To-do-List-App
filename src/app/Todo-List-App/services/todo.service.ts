@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Tasks } from "../models/todo-interface";
 import { map } from "rxjs/operators"; 
-const URL = 'http://localhost:3000/tasks';
+const URL = '/tasks';
 @Injectable()
 export class TodoService{  
     constructor(private http: HttpClient){}

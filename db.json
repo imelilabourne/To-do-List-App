@@ -1,16 +1,40 @@
 {
   "tasks": [
     {
-      "title": "Sleeping",
+      "title": "configure proxy config",
       "completed": false,
       "editing": false,
       "id": 1
     },
     {
-      "title": "Dancing all day",
+      "title": "study routing",
       "completed": false,
       "editing": false,
       "id": 2
+    },
+    {
+      "title": "go to the gym",
+      "completed": false,
+      "editing": false,
+      "id": 3
+    },
+    {
+      "title": "nap for 10 mins",
+      "completed": false,
+      "editing": false,
+      "id": 4
+    },
+    {
+      "title": "buy milk",
+      "completed": false,
+      "editing": false,
+      "id": 5
+    },
+    {
+      "title": "karaoke",
+      "completed": false,
+      "editing": false,
+      "id": 6
     }
   ]
 }
