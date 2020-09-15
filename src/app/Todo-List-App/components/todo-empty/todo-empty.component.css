@@ -1,0 +1,12 @@
+h3{
+    font-size: 2em;
+}
+
+.img-div, h3{
+    display: flex;
+    justify-content: center;
+}
+
+.img-div img{
+    max-width: 10em;
+}

@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { TodoList } from './Todo-List-App/containers/TodoList/Todo-list.component';
 import { TodoService } from './Todo-List-App/services/todo.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TodoEmptyComponent } from './Todo-List-App/components/todo-empty/todo-empty.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoList
+    TodoList,
+    TodoEmptyComponent
   ],
   imports: [
     BrowserModule,

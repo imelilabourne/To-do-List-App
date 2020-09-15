@@ -70,30 +70,25 @@ export class TodoList{
         // this.taskId++;
     }
 
-    //delete function
-    deleteTask(tasks: Tasks){
-        this.tasks = this.tasks.filter(task => task.id !== tasks.id);
-
-        this.todoService.deleteTask(tasks)
-            .subscribe(data => this.tasks.filter(task => {
-                return task.id !== data;
-            }))
-    }
-
     toggleEdit(event: Tasks){
         event.editing = !event.editing;
     }
 
-    editTask(event: Tasks): void{
+    editTask(event: Tasks){
         this.beforeEditing = event.title;
         event.editing = !event.editing;
         this.todoService.editTodo(event)
             .subscribe(data => this.tasks = this.tasks.map((task: Tasks )=>{
+                    
                     if (task.title === event.title){
                       task = Object.assign({}, task, event);
                     }
                     return task;
                   }));
+    }
+
+    console(){
+        console.log("try function");
     }
 
     doneEditing(task: Tasks):void{
@@ -105,7 +100,7 @@ export class TodoList{
 
     cancelEditing(task: Tasks){
         task.title = this.beforeEditing;
-        task.editing = false;
+        // task.editing = false;
     }
 
     remaining(): number{
@@ -115,9 +110,23 @@ export class TodoList{
     atleastOneCompleted(): boolean{
         return this.tasks.filter(task => task.completed).length > 0;
     }
+    //delete function
+    deleteTask(tasks: Tasks){
+        this.tasks = this.tasks.filter(task => task.id !== tasks.id);
 
-    clearCompleted(): void{
+        this.todoService.deleteTask(tasks)
+            .subscribe(data => this.tasks.filter(task => {
+                return task.id !== data;
+            }))
+    }
+
+    clearCompleted(tasks: Tasks){
         this.tasks = this.tasks.filter(task => !task.completed);
+
+        this.todoService.deleteTask(tasks)
+            .subscribe(data => this.tasks.filter(task => {
+                return task == data;
+            }))
     }
 
     selectAll():void{

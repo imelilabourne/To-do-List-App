@@ -9,6 +9,9 @@
             <input type="text" class="form-control addInput" placeholder="Things you want to do today?" [(ngModel)]="taskTitle" (keyup.enter) = "addTask()">
         </div>
         <div class="content">
+            <div *ngIf="remaining() ===0">
+                <todo-empty></todo-empty>
+            </div>
             <ul>
                 <li *ngFor= "let task of tasks" @fade>
                     <input type="checkbox" [(ngModel)]="task.completed">
@@ -23,12 +26,12 @@
                     <div *ngIf="!task.editing; else doneBtn" ><button class="btn btn-success listBtn"(click)="toggleEdit(task)" ><i class="fa fa-edit"> Edit</i></button></div>    
                     <ng-template #doneBtn>
                     <div>
-                        <button class="btn btn-success listBtn"(click)="editTask(task)" ><i class="fa fa-edit">   Done</i></button>
+                        <button class="btn btn-success listBtn"(click)="editTask(task); toggleEdit(task)" ><i class="fa fa-edit">Done</i></button>
                     </div>
                     </ng-template>
                     
                     <div>
-                        <button class="btn btn-danger listBtn" (click)="deleteTask(task) && doneEditing(task)"><i   class="fa fa-trash"> Del</i></button>
+                        <button class="btn btn-danger listBtn" (click)="deleteTask(task)"><i   class="fa fa-trash"> Del</i></button>
                     </div>
                 </li>
             </ul>
