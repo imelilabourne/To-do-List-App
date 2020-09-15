@@ -1,10 +1,16 @@
 {
   "tasks": [
     {
-      "title": "Angular 6",
+      "title": "Sleep",
       "completed": false,
       "editing": false,
       "id": 1
+    },
+    {
+      "title": "Dance",
+      "completed": false,
+      "editing": false,
+      "id": 2
     }
   ]
 }
