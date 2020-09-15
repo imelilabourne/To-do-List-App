@@ -1,16 +1,10 @@
 {
   "tasks": [
     {
-      "title": "Study Angular 6",
+      "title": "Angular 6",
       "completed": false,
       "editing": false,
       "id": 1
-    },
-    {
-      "title": "Workout",
-      "completed": false,
-      "editing": false,
-      "id": 2
     }
   ]
 }

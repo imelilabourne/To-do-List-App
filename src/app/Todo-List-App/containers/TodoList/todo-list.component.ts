@@ -100,7 +100,7 @@ export class TodoList{
 
     cancelEditing(task: Tasks){
         task.title = this.beforeEditing;
-        // task.editing = false;
+        task.editing = false;
     }
 
     remaining(): number{
