@@ -7,6 +7,10 @@
     text-decoration-line: line-through;
 }
 
+h1{
+    font-family: 'Patrick Hand', cursive;
+}
+
 .addInput{
     max-width: 500px;
     line-height: 2em;

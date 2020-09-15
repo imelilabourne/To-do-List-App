@@ -1,13 +1,13 @@
 {
   "tasks": [
     {
-      "title": "Sleep",
+      "title": "Sleeping",
       "completed": false,
       "editing": false,
       "id": 1
     },
     {
-      "title": "Dance",
+      "title": "Dancing all day",
       "completed": false,
       "editing": false,
       "id": 2

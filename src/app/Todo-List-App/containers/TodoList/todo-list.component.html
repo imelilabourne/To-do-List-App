@@ -2,7 +2,7 @@
     <div class="nav">Hello! <span class="dateClass">{{today | date: 'short'}}</span></div>
     <div class="main-container">
         <div class="header">
-            <h1>TODO LIST</h1>
+            <h1>TODO LIST <i class="fa fa-pencil"></i></h1>
         </div>
         <div *ngIf="remaining() !== 0">
             <div class="info"><input type="checkbox" (change)="selectAll()">Select All</div>
