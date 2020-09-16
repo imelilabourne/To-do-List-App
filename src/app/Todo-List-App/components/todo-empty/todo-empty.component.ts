@@ -8,8 +8,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
   animations: [
     trigger('fade', [
         transition(':enter', [
-            style({opacity: 0, transform: 'translateX(-30px)'}),
-            animate(1200, style({opacity:0, transform: 'translateY(0px)'}))
+            style({opacity: 0, transform: 'translateX(-10px)'}),
+            animate(1000, style({opacity:0, transform: 'translateY(0px)'}))
         ]),
         transition(':leave', [
             style({opacity: 0, transform: 'translateX(0px)'}),

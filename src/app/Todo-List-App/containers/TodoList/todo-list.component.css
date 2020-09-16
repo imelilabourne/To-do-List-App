@@ -34,7 +34,7 @@ li > *{
 
 .main{
     max-width: 50%;
-    box-shadow: 8px 4px#9cb1a0;
+    box-shadow: 8px 4px#ffffff;
     border-radius: 20px;
     padding: 0;
 }
@@ -45,7 +45,7 @@ li > *{
 }
 
 .nav{
-    background-color:#bfdbc546;
+    /* background-color:#000000; */
     display: block;
     /* color: white; */
     line-height: 3em;
@@ -55,7 +55,7 @@ li > *{
 }
 
 .main-container{
-    margin: 4%;
+    margin: 2%;
 }
 
 .main{
@@ -63,18 +63,23 @@ li > *{
 }
 
 li{
-    background-color:	#b9ecc24d;
+    background-color:	#ffffff85;
     margin: 4px;
     display: flex;
     align-items: center;
     padding-left: 10px;
     font-size: 2rem;
     line-height: 1.5em;
+    border-radius: 10px;
 }
 
 .info{
     display: flex;
     justify-content: flex-end;
+}
+
+.selectall{
+    margin-top: -30px;
 }
 
 input[type="checkbox"]{
@@ -84,6 +89,11 @@ input[type="checkbox"]{
 .dateClass{
     font-size: 1.5em;
     float: right;
-    padding-right: 20px;
-    color: rgb(42, 59, 59);
+    margin-right: 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 0 10px;
+    border-radius: 20px;
 }
+
+

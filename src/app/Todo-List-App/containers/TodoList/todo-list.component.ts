@@ -120,11 +120,12 @@ export class TodoList{
             }))
     }
 
+
     clearCompleted(tasks: Tasks){
         this.tasks = this.tasks.filter(task => !task.completed);
 
-        // this.todoService.deleteTask(tasks)
-        //     .subscribe(data => this.tasks.filter(task => !task.completed))
+        this.todoService.deleteTask(tasks)
+            .subscribe(data => this.tasks.filter(task => !task.completed))
     }
 
     selectAll():void{
