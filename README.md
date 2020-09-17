@@ -1,4 +1,4 @@
-#Description
+# Description
 This project is simple to-do list app for adding, editing, deleting tasks.
 
 # AngularApp
