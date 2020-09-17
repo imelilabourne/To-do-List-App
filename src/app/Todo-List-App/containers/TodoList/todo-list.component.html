@@ -23,7 +23,6 @@
                     </ng-template>
 
                     <!-- buttons switching -->
-                
                     <div *ngIf="!task.editing; else doneBtn" ><button [ngClass] = "{disabled: task.completed}" class="btn btn-success listBtn"(click)="toggleEdit(task)" ><i class="fa fa-edit"> Edit</i></button></div>    
                     <ng-template #doneBtn>
                     <div>
@@ -36,10 +35,12 @@
                     </div>
                 </li>
             </ul>
+            
             <!-- all task completed template-->
             <div *ngIf="remaining() === 0">
                 <todo-empty></todo-empty>
             </div>
+            <hr>
             <div class="info">
                 <div>{{ remaining()}} uncompleted tasks</div>
             </div>
