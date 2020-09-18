@@ -30,5 +30,10 @@ export class TodoService{
         return this.http.delete(URL + '/' + task.id);
     }
 
+    deleteAllTask(task: Tasks){
+        return this.http.delete(URL + '/' + task.id);
+    }
+
+
 
 }

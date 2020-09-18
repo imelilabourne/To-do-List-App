@@ -4,7 +4,7 @@
         <div class="header">
             <h1>TODO LIST <i class="fa fa-pencil"></i></h1>
         </div>
-        <div class="info selectall"><input type="checkbox" (change)="selectAll()">Select All</div>
+        <div class="info selectall"><label class="checkbox-inline"><input type="checkbox" (change)="selectAll()">Select All</label></div>
         <div class="inputDiv">
             <input type="text" class="form-control addInput" placeholder="Things you want to do today?" [(ngModel)]="taskTitle" (keyup.enter) = "addTask()">
         </div>
@@ -43,7 +43,7 @@
                 <div>{{ remaining()}} uncompleted tasks</div>
             </div>
             <div *ngIf="atleastOneCompleted()">
-                <button class="btn btn-warning btn-block" (click) ="clearCompleted()">Clear Completed</button> 
+                <button class="btn btn-warning btn-block" (click) ="clearCompleted(tasks)">Clear Completed</button> 
                 <div class="alert alert-warning">You've selected an item</div>
             </div>
             

@@ -86,10 +86,6 @@ li{
     margin-top: -30px;
 }
 
-input[type="checkbox"]{
-    margin: 0 10px;
-}
-
 .dateClass{
     font-size: 1em;
     float: right;
