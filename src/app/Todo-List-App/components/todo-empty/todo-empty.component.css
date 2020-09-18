@@ -1,8 +1,9 @@
-h3{
+h5{
     font-size: 2em;
+    margin-top: 1em;
 }
 
-.img-div, h3{
+.img-div, h5{
     display: flex;
     justify-content: center;
 }

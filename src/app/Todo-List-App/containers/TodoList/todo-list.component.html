@@ -4,9 +4,7 @@
         <div class="header">
             <h1>TODO LIST <i class="fa fa-pencil"></i></h1>
         </div>
-        <div *ngIf="remaining() !== 0">
-            <div class="info selectall"><input type="checkbox" (change)="selectAll()">Select All</div>
-        </div>
+        <div class="info selectall"><input type="checkbox" (change)="selectAll()">Select All</div>
         <div class="inputDiv">
             <input type="text" class="form-control addInput" placeholder="Things you want to do today?" [(ngModel)]="taskTitle" (keyup.enter) = "addTask()">
         </div>
@@ -23,15 +21,15 @@
                     </ng-template>
 
                     <!-- buttons switching -->
-                    <div *ngIf="!task.editing; else doneBtn" ><button [ngClass] = "{disabled: task.completed}" class="btn btn-success listBtn"(click)="toggleEdit(task)" ><i class="fa fa-edit"> Edit</i></button></div>    
+                    <div *ngIf="!task.editing; else doneBtn" ><button [ngClass] = "{disabled: task.completed}" class="btn btn-success listBtn"(click)="toggleEdit(task)" ><i class="fa fa-edit"> </i>Edit</button></div>    
                     <ng-template #doneBtn>
                     <div>
-                        <button class="btn btn-success listBtn"(click)="editTask(task); toggleEdit(task)" ><i class="fa fa-edit">Done</i></button>
+                        <button class="btn btn-success listBtn"(click)="editTask(task); toggleEdit(task)" ><i class="fa fa-edit"></i> Done</button>
                     </div>
                     </ng-template>
                 
                     <div>
-                        <button class="btn btn-danger listBtn" (click)="deleteTask(task)"><i   class="fa fa-trash"> Del</i></button>
+                        <button class="btn btn-danger listBtn" (click)="deleteTask(task)"><i   class="fa fa-trash"> </i> Del</button>
                     </div>
                 </li>
             </ul>

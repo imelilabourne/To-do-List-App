@@ -26,7 +26,7 @@ export class TodoList{
     taskId: number;
     taskTitle: string;
     editing: boolean = false;
-    tasks:Tasks[];
+    tasks:Tasks[] = [];
     beforeEditing: string;
     today: number = Date.now();
 
