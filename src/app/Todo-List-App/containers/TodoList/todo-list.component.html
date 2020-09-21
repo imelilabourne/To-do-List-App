@@ -4,7 +4,7 @@
         <div class="header">
             <h1>TODO LIST <i class="fa fa-pencil"></i></h1>
         </div>
-        <div class="info selectall"><label class="checkbox-inline"><input type="checkbox" (change)="selectAll()">Select All</label></div>
+        <div class="info selectall"><label class="checkbox-inline"><input type="checkbox" (change)="selectAll($event)">Select All</label></div>
         <div class="inputDiv">
             <input type="text" class="form-control addInput" placeholder="Things you want to do today?" [(ngModel)]="taskTitle" (keyup.enter) = "addTask()">
         </div>
@@ -12,7 +12,7 @@
             
             <ul>
                 <li *ngFor= "let task of tasks" @fade>
-                    <input type="checkbox" [(ngModel)]="task.completed">
+                    <input type="checkbox" [(ngModel)]="task.completed" >
 
                     <!-- input to focus -->
                     <div *ngIf="!task.editing; else editingTask" (dblclick) = "toggleEdit(task)" [ngClass]="{completed: task.completed}">{{task.title}}</div>
@@ -29,7 +29,7 @@
                     </ng-template>
                 
                     <div>
-                        <button class="btn btn-danger listBtn" (click)="deleteTask(task)"><i   class="fa fa-trash"> </i> Del</button>
+                        <button class="btn btn-danger listBtn" (click)="deleteTask(task.id)"><i   class="fa fa-trash"> </i> Del</button>
                     </div>
                 </li>
             </ul>
@@ -43,10 +43,9 @@
                 <div>{{ remaining()}} uncompleted tasks</div>
             </div>
             <div *ngIf="atleastOneCompleted()">
-                <button class="btn btn-warning btn-block" (click) ="clearCompleted(tasks)">Clear Completed</button> 
+                <button class="btn btn-warning btn-block" (click) ="deleteAllTask()">Clear Completed</button> 
                 <div class="alert alert-warning">You've selected an item</div>
             </div>
-            
         </div>
     </div>
 </div>

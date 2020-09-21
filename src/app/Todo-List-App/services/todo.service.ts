@@ -26,12 +26,17 @@ export class TodoService{
             .pipe(map((response: any) => response.json()));
     }
 
-    deleteTask(task: Tasks){
-        return this.http.delete(URL + '/' + task.id);
+    deleteTask(id:number){
+        return this.http.delete(URL + '/' + id);
     }
 
-    deleteAllTask(task: Tasks){
-        return this.http.delete(URL + '/' + task.id);
+    deleteAllTask(id: number[]){
+        return this.http.delete<Tasks[]>(URL + '/' + id);
+                    
+        
+                    // .pipe(map((res:any) => {
+                    //     res.json();  
+                    // }))
     }
 
 

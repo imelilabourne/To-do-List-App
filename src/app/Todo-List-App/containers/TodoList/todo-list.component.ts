@@ -29,6 +29,7 @@ export class TodoList{
     tasks:Tasks[] = [];
     beforeEditing: string;
     today: number = Date.now();
+    completed: Tasks[] = [];
 
     
     constructor(private todoService: TodoService){
@@ -45,7 +46,6 @@ export class TodoList{
     }
 
     addTask(){
-        //restricting empty string
         if(this.taskTitle.trim().length === 0){
             return;
         }
@@ -66,8 +66,6 @@ export class TodoList{
             editing: false
         })
         this.taskTitle ='';
-        
-        // this.taskId++;
     }
 
     toggleEdit(event: Tasks){
@@ -87,9 +85,6 @@ export class TodoList{
                   }));
     }
 
-    console(){
-        console.log("try function");
-    }
 
     doneEditing(task: Tasks):void{
         if(task.title.trim().length === 0){
@@ -110,28 +105,41 @@ export class TodoList{
     atleastOneCompleted(): boolean{
         return this.tasks.filter(task => task.completed).length > 0;
     }
+    
     //delete function
-    deleteTask(tasks: Tasks){
-        this.tasks = this.tasks.filter(task => task.id !== tasks.id);
+    deleteTask(taskId){
+        this.tasks = this.tasks.filter(task => task.id !== taskId);
 
-        this.todoService.deleteTask(tasks)
+        this.todoService.deleteTask(taskId)
             .subscribe(data => this.tasks.filter(task => {
-                return task.id !== data;
+                return task !== data;
             }))
+
+            
+    }
+
+    deleteAllTask(){
+        const selectedProducts = this.tasks.filter(product => product.completed).map(p => p.id);
+            console.log (selectedProducts);
+            
+            selectedProducts.forEach(value => {
+                this.todoService.deleteTask(value)
+                    .subscribe(res => {
+                        this.tasks = this.tasks.filter(task => !task.completed);
+                        });
+            });
+
+            // if(selectedProducts && selectedProducts.length === 1) {
+                
+            // }
+            // else{
+                // this.todoService.deleteAllTask(selectedProducts)
+                // .subscribe(data => console.log("more than 1 elements"));
+            // }
     }
 
 
-    clearCompleted(tasks: Tasks){
-        // this.tasks = this.tasks.filter(task => !task.completed);
-
-        // this.todoService.deleteAllTask(tasks)
-        //     .subscribe(data => this.tasks.filter(task => {
-        //         return task.completed !== data;
-        //     }))
-    }
-
-    selectAll():void{
-        this.tasks.forEach(task => task.completed = 
-            (<HTMLInputElement>event.target).checked);
+    selectAll(event):void{
+            this.tasks.forEach(x => x.completed = event.target.checked)
     }
 }
