@@ -124,7 +124,6 @@ export class TodoList{
             });
 
             // if(selectedProducts && selectedProducts.length === 1) {
-                
             // }
             // else{
                 // this.todoService.deleteAllTask(selectedProducts)

@@ -27,14 +27,8 @@ export class TodoService{
     }
 
     deleteTask(id:number){
-        return this.http.delete(URL + '/' + id);
+        return this.http.delete(URL + '/' + id)
+        .pipe(map((res:any) => res));
     }
-
-    deleteCompletedTask(id: number[]){
-        return this.http.delete<number[]>(URL + '/' + id)
-        .pipe(map((res:any) => res.json()));
-    }
-
-
 
 }

@@ -1,16 +1,3 @@
 {
-  "tasks": [
-    {
-      "title": "123",
-      "completed": false,
-      "editing": false,
-      "id": 1
-    },
-    {
-      "title": "2dasd",
-      "completed": false,
-      "editing": false,
-      "id": 2
-    }
-  ]
+  "tasks": []
 }
