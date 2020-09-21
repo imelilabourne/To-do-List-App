@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Tasks } from "../models/todo-interface";
@@ -23,20 +23,16 @@ export class TodoService{
     editTodo(task: Tasks):Observable<Tasks[]>{
         return this.http
             .put(URL + '/' + task.id, task)
-            .pipe(map((response: any) => response.json()));
+            .pipe(map((response: any) => response));
     }
 
     deleteTask(id:number){
         return this.http.delete(URL + '/' + id);
     }
 
-    deleteAllTask(id: number[]){
-        return this.http.delete<Tasks[]>(URL + '/' + id);
-                    
-        
-                    // .pipe(map((res:any) => {
-                    //     res.json();  
-                    // }))
+    deleteCompletedTask(id: number[]){
+        return this.http.delete<number[]>(URL + '/' + id)
+        .pipe(map((res:any) => res.json()));
     }
 
 

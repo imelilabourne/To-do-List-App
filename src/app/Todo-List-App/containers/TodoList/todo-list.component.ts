@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { takeLast } from 'rxjs/operators';
 import { Tasks } from 'src/app/Todo-List-App/models/todo-interface';
 import { TodoService } from '../../services/todo.service';
 
@@ -10,14 +11,14 @@ import { TodoService } from '../../services/todo.service';
     styleUrls: ['todo-list.component.css'],
     animations: [
         trigger('fade', [
-            transition(':enter', [
-                style({opacity: 0, transform: 'translateX(-40px)'}),
-                animate(500, style({opacity:1, transform: 'translateY(0px)'}))
-            ]),
-            transition(':leave', [
-                style({opacity: 0, transform: 'translateX(0px)'}),
-                animate(1000, style({opacity:1, transform: 'translateX(-50px)'}))
-            ])
+            // transition(':enter', [
+            //     style({opacity: 0, transform: 'translateX(-30px)'}),
+            //     animate(500, style({opacity:0, transform: 'translateY(0px)'}))
+            // ]),
+            // transition(':leave', [
+            //     style({opacity: 0, transform: 'translateX(0px)'}),
+            //     animate(500, style({opacity:0, transform: 'translateX(-30px)'}))
+            // ])
         ])
     ]
 })
@@ -29,7 +30,6 @@ export class TodoList{
     tasks:Tasks[] = [];
     beforeEditing: string;
     today: number = Date.now();
-    completed: Tasks[] = [];
 
     
     constructor(private todoService: TodoService){
@@ -44,11 +44,9 @@ export class TodoList{
             .getTodo()
             .subscribe(data => this.tasks = data);
     }
-
+    
     addTask(){
-        if(this.taskTitle.trim().length === 0){
-            return;
-        }
+        if(this.taskTitle.trim().length === 0)return;
         
         this.todoService.addTask({id:this.taskId,
             title: this.taskTitle,
@@ -56,16 +54,15 @@ export class TodoList{
             editing: false})
             .subscribe((data: Tasks) => {
                 console.log(data);
+            });
+            this.tasks.push({
+                id:this.taskId,
+                title: this.taskTitle,
+                completed: false,
+                editing: false
             })
-        
-        //display 
-        this.tasks.push({
-            id:this.taskId,
-            title: this.taskTitle,
-            completed: false,
-            editing: false
-        })
-        this.taskTitle ='';
+            this.taskTitle ='';
+            this.ngOnInit();
     }
 
     toggleEdit(event: Tasks){
@@ -77,7 +74,6 @@ export class TodoList{
         event.editing = !event.editing;
         this.todoService.editTodo(event)
             .subscribe(data => this.tasks = this.tasks.map((task: Tasks )=>{
-                    
                     if (task.title === event.title){
                       task = Object.assign({}, task, event);
                     }
@@ -114,15 +110,13 @@ export class TodoList{
             .subscribe(data => this.tasks.filter(task => {
                 return task !== data;
             }))
-
-            
     }
 
-    deleteAllTask(){
-        const selectedProducts = this.tasks.filter(product => product.completed).map(p => p.id);
-            console.log (selectedProducts);
+    deleteCompletedTask(){
+        const selectedItems = this.tasks.filter(item => item.completed).map(i => i.id);
+            console.log (selectedItems);
             
-            selectedProducts.forEach(value => {
+            selectedItems.forEach(value => {
                 this.todoService.deleteTask(value)
                     .subscribe(res => {
                         this.tasks = this.tasks.filter(task => !task.completed);
