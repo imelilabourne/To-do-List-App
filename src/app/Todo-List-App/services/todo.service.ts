@@ -1,10 +1,12 @@
-import { HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { Tasks } from "../models/todo-interface";
-import { map } from "rxjs/operators"; 
 const URL = '/tasks';
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class TodoService{  
     constructor(private http: HttpClient){}
 
