@@ -1,10 +1,11 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const express = require("express");
 const app = express();
-
 //Middleware
 app.use(express.json());
+
+app.use("/tasks", require("./routes/todoRoutes"));
 
 app.use((err, req, res, next) => {
     console.log(err.stack);
