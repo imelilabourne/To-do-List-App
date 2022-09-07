@@ -6,6 +6,8 @@ router.route('/')
   .get(todoController.getAllTasks)
   .post(todoController.addTask);
 
-router.route('/:id').post(todoController.editTaskById);
+router.route('/:id').put(todoController.editTaskById);
+
+router.route('/:id').delete(todoController.deleteTask)
 
 module.exports = router;
